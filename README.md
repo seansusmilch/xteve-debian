@@ -1,21 +1,50 @@
-# xteve
-xteve, in docker with cron
+![](xTeVe_logo.PNG)
 
-docker runs in host mode \
-access xteve webui ip:34400/web/
+# xteve-debian Docker
 
-after docker start check your config folder and do your setups, setup is persistent, start from scratch by delete them
+A debian xTeVe container with streamlink!
+Forked from [alturismo/xteve](https://github.com/alturismo/xteve)
 
-cron and xteve start options are updated on docker restart.
+- [xteve-debian Docker](#xteve-debian-docker)
+  - [Environment Variables](#environment-variables)
+  - [Docker compose](#docker-compose)
+  - [Docker run](#docker-run)
+  - [Using streamlink in xTeVe](#using-streamlink-in-xteve)
 
-mounts to use as sample \
-Container Path: /root/.xteve <> /mnt/user/appdata/xteve/ \
-Container Path: /config <> /mnt/user/appdata/xteve/_config/ \
-Container Path: /tmp/xteve <> /tmp/xteve/ \
-Container Path: /TVH <> /mnt/user/appdata/tvheadend/data/ << not needed if no TVHeadend is used \
-while /mnt/user/appdata/ should fit to your system path ...
 
+## Environment Variables
+
+| Name | Description |
+|---|---|
+| TZ | Timezone (eg. America/Chicago)  |
+| I_FFMPEG | if 1, install ffmpeg (default: 0) |
+| I_STREAMLINK | if 1, install streamlink (default: 1) |
+
+
+## Docker compose
+
+```yaml
+version: '3'
+
+services:
+  xteve:
+    container_name: xteve-debian
+    image: superminecraftkid64/xteve-debian
+    ports:
+      - 34400:34400
+    environment:
+      TZ: 'America/Chicago'
+      I_FFMPEG: 0
+      I_STREAMLINK: 1
+    volumes:
+      - .\mnt\config:/config
+      - .\mnt\root:/root/.xteve
+      - .\mnt\tmp:/tmp/xteve
 ```
+
+## Docker run
+
+```bash
 docker run -d \
   --name=xteve \
   --net=host \
@@ -26,23 +55,13 @@ docker run -d \
   -v /mnt/user/appdata/xteve/_config:/config:rw \
   -v /tmp/xteve/:/tmp/xteve:rw \
   -v /mnt/user/appdata/tvheadend/data/:/TVH \
-  alturismo/xteve
+  superminecraftkid64/xteve
 ```
 
-to test the cronjob functions \
-docker exec -it "dockername" ./config/cronjob.sh
+## Using streamlink in xTeVe
 
-included functions are (all can be individual turned on / off)
+xTeVe doesn't officially support streamlink when connecting to streams, however theres a bit of a hacky way.
 
-xteve - iptv and epg proxy server for plex, emby, etc ... thanks to @marmei \
-website: http://xteve.de \
-Discord: https://discordapp.com/channels/465222357754314767/465222357754314773
+See this github discussion [here](https://github.com/streamlink/streamlink/discussions/3430#discussioncomment-234211)
 
-some small script lines cause i personally use tvheadend and get playlist for xteve and cp xml data to tvheadend
-added now grab xmltv from tvheadend as source for xteve
-
-added rewrite function for reverse proxy usage for xml to get icon links working,
-
-see cronjob.sh
-
-so, credits to the programmers, i just putted this together in a docker to fit my needs
+Credits to those who developed xTeVe as well as **alturismo** who made the original container

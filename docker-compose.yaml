@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  xteve:
+    container_name: xteve-debian
+    image: superminecraftkid64/xteve-debian
+    ports:
+      - 34400:34400
+    environment:
+      TZ: 'America/Chicago'
+      I_FFMPEG: 0
+      I_STREAMLINK: 1
+    volumes:
+      - .\mnt\config:/config
+      - .\mnt\root:/root/.xteve
+      - .\mnt\tmp:/tmp/xteve
