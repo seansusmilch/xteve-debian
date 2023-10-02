@@ -1,11 +1,12 @@
 ![](xTeVe_logo.PNG)
 
-# xteve-debian Docker
+# xteve-streamlink Docker
 
 A debian xTeVe container with streamlink!
 Forked from [alturismo/xteve](https://github.com/alturismo/xteve)
+Credits to those who developed xTeVe, streamlink, as well as **alturismo** who made the original container
 
-- [xteve-debian Docker](#xteve-debian-docker)
+- [xteve-streamlink Docker](#xteve-streamlink-docker)
   - [Environment Variables](#environment-variables)
   - [Docker compose](#docker-compose)
   - [Docker run](#docker-run)
@@ -63,5 +64,3 @@ docker run -d \
 xTeVe doesn't officially support streamlink when connecting to streams, however theres a bit of a hacky way.
 
 See this github discussion [here](https://github.com/streamlink/streamlink/discussions/3430#discussioncomment-234211)
-
-Credits to those who developed xTeVe as well as **alturismo** who made the original container
