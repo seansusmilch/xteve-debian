@@ -30,7 +30,7 @@ version: '3'
 services:
   xteve:
     container_name: xteve-streamlink
-    image: superminecraftkid64/xteve-streamlink
+    image: ghcr.io/seansusmilch/xteve-streamlink
     ports:
       - 34400:34400
     environment:
@@ -55,8 +55,7 @@ docker run -d \
   -v /mnt/user/appdata/xteve/:/root/.xteve:rw \
   -v /mnt/user/appdata/xteve/_config:/config:rw \
   -v /tmp/xteve/:/tmp/xteve:rw \
-  -v /mnt/user/appdata/tvheadend/data/:/TVH \
-  superminecraftkid64/xteve
+  ghcr.io/seansusmilch/xteve-streamlink
 ```
 
 ## Using streamlink in xTeVe

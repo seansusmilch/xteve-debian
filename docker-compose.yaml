@@ -3,7 +3,7 @@ version: '3'
 services:
   xteve:
     container_name: xteve-streamlink
-    image: superminecraftkid64/xteve-streamlink
+    image: ghcr.io/seansusmilch/xteve-streamlink
     ports:
       - 34400:34400
     environment:
