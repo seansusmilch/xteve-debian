@@ -31,4 +31,4 @@ RUN chmod +x /usr/bin/xteve
 EXPOSE 34400
 
 # Entrypoint
-ENTRYPOINT ["/startup.sh"]
+ENTRYPOINT ["./startup.sh"]
