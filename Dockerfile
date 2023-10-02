@@ -20,10 +20,6 @@ ENV I_FFMPEG=0
 ENV I_STREAMLINK=1
 COPY ./startup.sh /
 
-# Add ffmpeg, vlc, streamlink
-# RUN apt install -y --no-install-recommends streamlink
-# RUN sed -i 's/geteuid/getppid/' /usr/bin/vlc
-
 # Add xTeve and guide2go
 RUN wget https://github.com/xteve-project/xTeVe-Downloads/raw/master/xteve_linux_amd64.zip -O temp.zip && \
     unzip temp.zip -d /usr/bin/ && rm temp.zip
@@ -35,5 +31,4 @@ RUN chmod +x /usr/bin/xteve
 EXPOSE 34400
 
 # Entrypoint
-# ENTRYPOINT ["xteve", "-port=34400", "-config=/root/.xteve/"]
 ENTRYPOINT ["/startup.sh"]
