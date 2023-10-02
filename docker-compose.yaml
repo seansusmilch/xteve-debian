@@ -2,8 +2,8 @@ version: '3'
 
 services:
   xteve:
-    container_name: xteve-debian
-    image: superminecraftkid64/xteve-debian
+    container_name: xteve-streamlink
+    image: superminecraftkid64/xteve-streamlink
     ports:
       - 34400:34400
     environment:
