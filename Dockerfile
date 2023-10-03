@@ -19,6 +19,7 @@ ENV SETUP_DONE=0
 ENV I_FFMPEG=0
 ENV I_STREAMLINK=1
 COPY ./startup.sh /
+RUN chmod +x /startup.sh
 
 # Add xTeve and guide2go
 RUN wget https://github.com/xteve-project/xTeVe-Downloads/raw/master/xteve_linux_amd64.zip -O temp.zip && \
