@@ -63,3 +63,9 @@ docker run -d \
 xTeVe doesn't officially support streamlink when connecting to streams, however theres a bit of a hacky way.
 
 See this github discussion [here](https://github.com/streamlink/streamlink/discussions/3430#discussioncomment-234211)
+
+I've had a better experience adding a few more arguments in there, making the final arg list below
+
+```bash
+--stdout [URL] --default-stream best --stream-segment-threads 5 --retry-streams 1 --retry-open 3 --stream-types hls
+```
